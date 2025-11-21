@@ -3,7 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 function App() {
   return (
-    <div>
+    <div className="dragDropArea">
       <DragDropContext onDragEnd={() => {}}>
         <Droppable droppableId="droppable">
           {(provided) => (
@@ -14,6 +14,7 @@ function App() {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
+                    className="item"
                   >
                     item0
                   </div>

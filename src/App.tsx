@@ -1,9 +1,14 @@
+import { useState } from "react";
 import "./App.css";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 function App() {
-  const onDragEnd = () => {
-    console.log("onDragEnd");
+  const [items, setItems] = useState<string[]>(["item0", "item1", "item2"]);
+
+  const onDragEnd = (result: any) => {
+    const remove = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, remove[0]);
+    setItems(items);
   };
   return (
     <div className="dragDropArea">
